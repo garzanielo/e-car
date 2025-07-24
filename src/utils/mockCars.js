@@ -1,3 +1,13 @@
+import toyotaImg from '@/assets/cars/toyota.webp'
+import mustangImg from '@/assets/cars/mustang.webp'
+import teslaImg from '@/assets/cars/tesla.webp'
+import onixImg from '@/assets/cars/onix.webp'
+import hondaCivicImg from '@/assets/cars/honda-civic.webp'
+import bmwX5Img from '@/assets/cars/bmw-x5.webp'
+import audiA4Img from '@/assets/cars/audi-a4.webp'
+import volkswagenGolfImg from '@/assets/cars/volkswagen-golf.jpg'
+
+
 export const cars = [
   {
     id: 1,
@@ -9,7 +19,7 @@ export const cars = [
     transmission: "Automático",
     mileage: 15000,
     condition: "Usado",
-    image: "https://cdn.pixabay.com/photo/2021/06/13/16/56/toyota-6332676_1280.jpg"
+    image: toyotaImg
   },
   {
     id: 2,
@@ -21,7 +31,7 @@ export const cars = [
     transmission: "Manual",
     mileage: 0,
     condition: "Nuevo",
-    image: "https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_1280.jpg"
+    image: mustangImg
   },
   {
     id: 3,
@@ -33,7 +43,7 @@ export const cars = [
     transmission: "Automático",
     mileage: 8000,
     condition: "Usado",
-    image: "https://cdn.pixabay.com/photo/2020/05/26/16/18/tesla-5224383_1280.jpg"
+    image: teslaImg
   },
   {
     id: 4,
@@ -45,6 +55,55 @@ export const cars = [
     transmission: "Manual",
     mileage: 30000,
     condition: "Usado",
-    image: "https://cdn.pixabay.com/photo/2018/03/05/14/41/car-3195744_1280.jpg"
+    image: onixImg
+  },
+  // Nuevos autos agregados:
+  {
+    id: 5,
+    brand: "Honda",
+    model: "Civic",
+    year: 2023,
+    price: 22000,
+    fuelType: "Nafta",
+    transmission: "Automático",
+    mileage: 12000,
+    condition: "Usado",
+    image: hondaCivicImg
+  },
+  {
+    id: 6,
+    brand: "BMW",
+    model: "X5",
+    year: 2024,
+    price: 60000,
+    fuelType: "Diesel",
+    transmission: "Automático",
+    mileage: 0,
+    condition: "Nuevo",
+    image: bmwX5Img
+  },
+  {
+    id: 7,
+    brand: "Audi",
+    model: "A4",
+    year: 2022,
+    price: 35000,
+    fuelType: "Nafta",
+    transmission: "Manual",
+    mileage: 15000,
+    condition: "Usado",
+    image: audiA4Img
+  },
+  {
+    id: 8,
+    brand: "Volkswagen",
+    model: "Golf",
+    year: 2021,
+    price: 17000,
+    fuelType: "Nafta",
+    transmission: "Manual",
+    mileage: 25000,
+    condition: "Usado",
+    image: volkswagenGolfImg
   }
 ]

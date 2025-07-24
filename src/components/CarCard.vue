@@ -1,11 +1,12 @@
 <template>
   <v-card
     class="car-card"
-    max-width="340"
-    elevation="3"
-    rounded="lg"
+    max-width="380"
+    elevation="4"
+    rounded="xl"
   >
-    <v-img :src="car.image" height="200" cover class="rounded-t-lg" />
+    <v-img :src="car.image" height="200" cover class="rounded-t-xl" />
+
     <v-card-title class="text-h6 font-weight-bold">
       {{ car.brand }} {{ car.model }}
     </v-card-title>
@@ -15,15 +16,23 @@
     </v-card-subtitle>
 
     <v-card-text>
-      <div>Mileage: {{ car.mileage.toLocaleString() }} km</div>
-      <div>Condition: <strong>{{ car.condition }}</strong></div>
+      <div>Kilometraje: {{ car.mileage.toLocaleString() }} km</div>
+      <div>Condición: <strong>{{ car.condition }}</strong></div>
       <div class="text-h6 mt-3 text-primary font-weight-bold">
         ${{ car.price.toLocaleString() }}
       </div>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="primary" block flat>View Details</v-btn>
+      <v-btn
+        color="primary"
+        variant="elevated"
+        block
+        class="text-white"
+        :to="`/car/${car.id}`"
+      >
+        Ver Detalles
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -36,10 +45,10 @@ defineProps({
 
 <style scoped>
 .car-card {
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .car-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 </style>
