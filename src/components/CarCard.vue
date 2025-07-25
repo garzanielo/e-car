@@ -2,23 +2,31 @@
   <v-card
     class="car-card"
     max-width="380"
-    elevation="4"
+    elevation="2"
     rounded="xl"
+    hover
   >
-    <v-img :src="car.image" height="200" cover class="rounded-t-xl" />
+    <v-img
+      :src="car.image"
+      height="200"
+      cover
+      class="rounded-t-xl"
+    />
 
     <v-card-title class="text-h6 font-weight-bold">
       {{ car.brand }} {{ car.model }}
     </v-card-title>
 
-    <v-card-subtitle class="text-subtitle-2 text-grey-darken-1">
+    <v-card-subtitle class="text-subtitle-2 grey--text text--darken-1">
       {{ car.year }} • {{ car.fuelType }} • {{ car.transmission }}
     </v-card-subtitle>
 
     <v-card-text>
       <div>Kilometraje: {{ car.mileage.toLocaleString() }} km</div>
-      <div>Condición: <strong>{{ car.condition }}</strong></div>
-      <div class="text-h6 mt-3 text-primary font-weight-bold">
+      <div>
+        Condición: <strong>{{ car.condition }}</strong>
+      </div>
+      <div class="text-h6 mt-3 primary--text font-weight-bold">
         ${{ car.price.toLocaleString() }}
       </div>
     </v-card-text>
@@ -39,7 +47,7 @@
 
 <script setup>
 defineProps({
-  car: Object
+  car: Object,
 })
 </script>
 

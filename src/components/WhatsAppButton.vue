@@ -1,23 +1,31 @@
-<script setup></script>
+<script setup>
+const whatsappLink = "https://wa.me/5491123456789";
+</script>
 
 <template>
-  <a
-    href="https://wa.me/5491123456789"
+  <v-btn
+    icon
+    :href="whatsappLink"
     target="_blank"
-    class="whatsapp-button"
     aria-label="WhatsApp"
+    class="whatsapp-fab"
+    color="success"
+    size="default"
   >
-    <v-btn icon class="whatsapp-btn" color="success">
-      <v-icon>mdi-whatsapp</v-icon>
-    </v-btn>
-  </a>
+    <v-icon size="22">mdi-whatsapp</v-icon>
+  </v-btn>
 </template>
 
 <style scoped>
-.whatsapp-button {
+.whatsapp-fab {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1100;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+.whatsapp-fab:hover {
+  transform: scale(1.08);
 }
 </style>

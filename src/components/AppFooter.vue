@@ -1,19 +1,27 @@
 <template>
-  <v-footer color="primary" class="white--text pa-6">
+  <v-footer color="primary" class="pa-6 text-white">
     <v-container>
-      <v-row justify="space-between" align="center">
-        <v-col cols="12" md="6">
-          <p>&copy; {{ new Date().getFullYear() }} e-Car. Todos los derechos reservados.</p>
+      <v-row justify="space-between" align="center" class="flex-wrap">
+        <!-- Texto -->
+        <v-col cols="12" md="6" class="mb-2 mb-md-0">
+          <p class="mb-0 text-subtitle-2">
+            &copy; {{ new Date().getFullYear() }} <strong>e-Car</strong>. Todos los derechos reservados.
+          </p>
         </v-col>
-        <v-col cols="12" md="6" class="text-md-right">
-          <v-btn icon href="https://www.instagram.com" target="_blank">
-            <v-icon>mdi-instagram</v-icon>
-          </v-btn>
-          <v-btn icon href="https://www.facebook.com" target="_blank">
-            <v-icon>mdi-facebook</v-icon>
-          </v-btn>
-          <v-btn icon href="mailto:contacto@e-car.com">
-            <v-icon>mdi-email</v-icon>
+
+        <!-- Redes -->
+        <v-col cols="12" md="6" class="text-md-end">
+          <v-btn
+            v-for="(icon, i) in socialIcons"
+            :key="i"
+            :href="icon.link"
+            target="_blank"
+            icon
+            class="mx-1"
+            size="small"
+            color="white"
+          >
+            <v-icon>{{ icon.icon }}</v-icon>
           </v-btn>
         </v-col>
       </v-row>
@@ -21,8 +29,10 @@
   </v-footer>
 </template>
 
-
 <script setup>
-// nada por ahora
+const socialIcons = [
+  { icon: "mdi-instagram", link: "https://www.instagram.com" },
+  { icon: "mdi-facebook", link: "https://www.facebook.com" },
+  { icon: "mdi-email", link: "mailto:contacto@e-car.com" },
+];
 </script>
-

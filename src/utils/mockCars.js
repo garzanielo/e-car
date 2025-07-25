@@ -7,7 +7,6 @@ import bmwX5Img from '@/assets/cars/bmw-x5.webp'
 import audiA4Img from '@/assets/cars/audi-a4.webp'
 import volkswagenGolfImg from '@/assets/cars/volkswagen-golf.jpg'
 
-
 export const cars = [
   {
     id: 1,
@@ -19,7 +18,10 @@ export const cars = [
     transmission: "Automático",
     mileage: 15000,
     condition: "Usado",
-    image: toyotaImg
+    image: toyotaImg,
+    engine: "1.8L",
+    color: "Gris Plata",
+    doors: 4
   },
   {
     id: 2,
@@ -31,7 +33,10 @@ export const cars = [
     transmission: "Manual",
     mileage: 0,
     condition: "Nuevo",
-    image: mustangImg
+    image: mustangImg,
+    engine: "5.0L V8",
+    color: "Rojo Fuego",
+    doors: 2
   },
   {
     id: 3,
@@ -43,7 +48,10 @@ export const cars = [
     transmission: "Automático",
     mileage: 8000,
     condition: "Usado",
-    image: teslaImg
+    image: teslaImg,
+    engine: "Motor Dual Eléctrico",
+    color: "Blanco Perlado",
+    doors: 4
   },
   {
     id: 4,
@@ -55,9 +63,11 @@ export const cars = [
     transmission: "Manual",
     mileage: 30000,
     condition: "Usado",
-    image: onixImg
+    image: onixImg,
+    engine: "1.2L",
+    color: "Azul Marino",
+    doors: 5
   },
-  // Nuevos autos agregados:
   {
     id: 5,
     brand: "Honda",
@@ -68,7 +78,10 @@ export const cars = [
     transmission: "Automático",
     mileage: 12000,
     condition: "Usado",
-    image: hondaCivicImg
+    image: hondaCivicImg,
+    engine: "2.0L",
+    color: "Negro Cristal",
+    doors: 4
   },
   {
     id: 6,
@@ -80,7 +93,10 @@ export const cars = [
     transmission: "Automático",
     mileage: 0,
     condition: "Nuevo",
-    image: bmwX5Img
+    image: bmwX5Img,
+    engine: "3.0L Turbo",
+    color: "Gris Mineral",
+    doors: 5
   },
   {
     id: 7,
@@ -92,7 +108,10 @@ export const cars = [
     transmission: "Manual",
     mileage: 15000,
     condition: "Usado",
-    image: audiA4Img
+    image: audiA4Img,
+    engine: "2.0L TFSI",
+    color: "Blanco Glaciar",
+    doors: 4
   },
   {
     id: 8,
@@ -104,6 +123,9 @@ export const cars = [
     transmission: "Manual",
     mileage: 25000,
     condition: "Usado",
-    image: volkswagenGolfImg
+    image: volkswagenGolfImg,
+    engine: "1.4L TSI",
+    color: "Rojo Tornado",
+    doors: 5
   }
 ]
