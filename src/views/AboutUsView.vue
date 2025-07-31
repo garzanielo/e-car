@@ -2,7 +2,7 @@
 
 <template>
   <v-container class="py-16">
-    <!-- Título -->
+    
     <v-row justify="center" class="mb-10 text-center">
       <v-col cols="12" md="8">
         <h1 class="text-h4 font-weight-bold mb-4">Sobre Nosotros</h1>
@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
 
-    <!-- Misión / Visión / Valores -->
+    
     <v-row justify="center" align="stretch" class="mb-16">
       <v-col cols="12" md="4" class="d-flex">
         <v-card class="pa-6" elevation="3" color="grey-lighten-5" rounded="xl">
@@ -47,7 +47,7 @@
       </v-col>
     </v-row>
 
-    <!-- CTA final -->
+    
     <v-row justify="center">
       <v-col cols="12" md="6" class="text-center">
         <p class="text-subtitle-1 mb-4">

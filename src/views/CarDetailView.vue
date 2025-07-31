@@ -1,9 +1,11 @@
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
-import { cars } from '@/utils/mockCars'
-import { computed, ref, watch } from 'vue'
+import { useRoute, useRouter } from "vue-router";
+import { cars as mockCars } from "@/utils/mockCars.js";
+import { useCarStore } from "@/stores/useCarStore.js";
+import { computed, ref, watch } from "vue";
 
-// Íconos Material Design correctos para cada propiedad
+const carStore = useCarStore();
+
 const carDetails = {
   engine: { text: "Motor", icon: "mdi-engine" },
   fuelType: { text: "Combustible", icon: "mdi-gas-station" },
@@ -11,41 +13,51 @@ const carDetails = {
   mileage: { text: "Kilometraje", icon: "mdi-speedometer" },
   color: { text: "Color", icon: "mdi-palette" },
   doors: { text: "Puertas", icon: "mdi-car-door" },
-}
+};
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const carId = ref(parseInt(route.params.id))
-const car = ref(cars.find(c => c.id === carId.value))
+const allCars = computed(() => {
+  const storeIds = new Set(carStore.cars.map((c) => c.id));
+  return [...carStore.cars, ...mockCars.filter((c) => !storeIds.has(c.id))];
+});
 
-// Observamos cambios en la ruta para actualizar el auto mostrado
+const carId = ref(parseInt(route.params.id));
+const car = ref(allCars.value.find((c) => c.id === carId.value) || null);
+
 watch(
   () => route.params.id,
   (newId) => {
-    carId.value = parseInt(newId)
-    car.value = cars.find(c => c.id === carId.value)
+    carId.value = parseInt(newId);
+    car.value = allCars.value.find((c) => c.id === carId.value) || null;
   }
-)
+);
 
-// Autos relacionados por marca o rango de precio (+/- 5000)
 const relatedCars = computed(() => {
-  if (!car.value) return []
-  return cars.filter(
-    c =>
+  if (!car.value) return [];
+  return allCars.value.filter(
+    (c) =>
       c.id !== car.value.id &&
-      (c.brand === car.value.brand || Math.abs(c.price - car.value.price) <= 5000)
-  )
-})
+      (c.brand === car.value.brand ||
+        Math.abs(c.price - car.value.price) <= 5000)
+  );
+});
 
 function goBack() {
-  router.push('/catalog')
+  router.push("/catalog");
 }
 </script>
 
 <template>
   <v-container class="py-10">
-    <v-btn color="primary" class="mb-6" rounded @click="goBack" aria-label="Volver al catálogo">
+    <v-btn
+      color="primary"
+      class="mb-6"
+      rounded
+      @click="goBack"
+      aria-label="Volver al catálogo"
+    >
       ← Volver al catálogo
     </v-btn>
 
@@ -62,9 +74,15 @@ function goBack() {
       </v-col>
 
       <v-col cols="12" md="6" v-if="car">
-        <h2 class="text-h4 font-weight-bold mb-2">{{ car.brand }} {{ car.model }}</h2>
-        <p class="text-subtitle-1 text--secondary mb-4">{{ car.year }} • {{ car.condition }}</p>
-        <h3 class="text-h5 font-weight-bold text-primary mb-6">$ {{ car.price.toLocaleString() }}</h3>
+        <h2 class="text-h4 font-weight-bold mb-2">
+          {{ car.brand }} {{ car.model }}
+        </h2>
+        <p class="text-subtitle-1 text--secondary mb-4">
+          {{ car.year }} • {{ car.condition }}
+        </p>
+        <h3 class="text-h5 font-weight-bold text-primary mb-6">
+          $ {{ car.price.toLocaleString() }}
+        </h3>
 
         <v-divider class="mb-4" />
 

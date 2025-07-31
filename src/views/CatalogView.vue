@@ -1,18 +1,38 @@
 <script setup>
-import { ref, computed } from "vue";
-import { cars } from "@/utils/mockCars.js";
+import { ref, computed, watchEffect } from "vue";
+import { cars as mockCars } from "@/utils/mockCars.js";
+import { useCarStore } from "@/stores/useCarStore.js";
 import CarCard from "@/components/CarCard.vue";
 
-// Filtros
-const selectedBrand = ref(null);
-const priceRange = ref([0, 50000]);
-const mileageRange = ref([0, 100000]);
-const yearRange = ref([2000, 2025]);
+const carStore = useCarStore();
 
-const carBrands = [...new Set(cars.map((c) => c.brand))];
+const selectedBrand = ref(null);
+const priceRange = ref([0, 0]);
+const mileageRange = ref([0, 0]);
+const yearRange = ref([0, 0]);
+
+const allCars = computed(() => {
+  const combined = [...mockCars, ...carStore.cars];
+  const uniqueById = new Map(combined.map((car) => [car.id, car]));
+  return Array.from(uniqueById.values());
+});
+
+watchEffect(() => {
+  const prices = allCars.value.map(car => car.price);
+  const mileage = allCars.value.map(car => car.mileage);
+  const years = allCars.value.map(car => car.year);
+
+  priceRange.value = [Math.min(...prices), Math.max(...prices)];
+  mileageRange.value = [Math.min(...mileage), Math.max(...mileage)];
+  yearRange.value = [Math.min(...years), Math.max(...years)];
+});
+
+const carBrands = computed(() => {
+  return [...new Set(allCars.value.map((c) => c.brand))];
+});
 
 const filteredCars = computed(() => {
-  return cars.filter((car) => {
+  return allCars.value.filter((car) => {
     const matchBrand =
       !selectedBrand.value || car.brand === selectedBrand.value;
     const matchPrice =
@@ -30,7 +50,6 @@ const filteredCars = computed(() => {
 <template>
   <v-container fluid>
     <v-row no-gutters>
-      <!-- Sidebar -->
       <v-col
         cols="12"
         md="3"
@@ -39,7 +58,6 @@ const filteredCars = computed(() => {
       >
         <h2 class="text-h6 font-weight-bold mb-6">Filtrar Autos</h2>
 
-        <!-- Precio -->
         <div class="mb-1 font-weight-medium grey--text text--darken-1">
           ${{ priceRange[0].toLocaleString() }} - ${{
             priceRange[1].toLocaleString()
@@ -58,7 +76,6 @@ const filteredCars = computed(() => {
           </template>
         </v-range-slider>
 
-        <!-- Kilometraje -->
         <div class="mb-1 font-weight-medium grey--text text--darken-1">
           {{ mileageRange[0].toLocaleString() }} KM -
           {{ mileageRange[1].toLocaleString() }} KM
@@ -76,7 +93,6 @@ const filteredCars = computed(() => {
           </template>
         </v-range-slider>
 
-        <!-- Año -->
         <div class="mb-1 font-weight-medium grey--text text--darken-1">
           {{ yearRange[0] }} - {{ yearRange[1] }}
         </div>
@@ -93,7 +109,6 @@ const filteredCars = computed(() => {
           </template>
         </v-range-slider>
 
-        <!-- Marca -->
         <v-select
           v-model="selectedBrand"
           :items="carBrands"
@@ -106,7 +121,6 @@ const filteredCars = computed(() => {
         <v-btn color="primary" block class="mt-8" depressed> Buscar </v-btn>
       </v-col>
 
-      <!-- Contenido principal -->
       <v-col cols="12" md="9">
         <section class="py-12 px-6">
           <v-row justify="center">

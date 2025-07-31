@@ -1,13 +1,24 @@
 <script setup>
 import CarCard from "@/components/CarCard.vue";
-import { cars } from "@/utils/mockCars";
+import { cars as mockCars } from "@/utils/mockCars.js";
+import { useCarStore } from "@/stores/useCarStore.js";
 import heroImage from "@/assets/hero-car.avif";
+import { computed } from "vue";
+
+const carStore = useCarStore();
+
+const allCars = computed(() => {
+  const storeCarIds = new Set(carStore.cars.map(c => c.id));
+  return [
+    ...carStore.cars,
+    ...mockCars.filter(c => !storeCarIds.has(c.id))
+  ];
+});
 </script>
 
 <template>
   <div class="home-background">
     <v-container fluid class="pa-0">
-      <!-- Hero con imagen local -->
       <v-sheet
         height="600"
         elevation="0"
@@ -18,7 +29,6 @@ import heroImage from "@/assets/hero-car.avif";
             <h1 class="text-h2 font-weight-bold mb-4">
               Tu próximo auto te espera
             </h1>
-
             <p class="text-subtitle-1">
               Conocé nuestra amplia gama de vehículos disponibles
             </p>
@@ -26,16 +36,14 @@ import heroImage from "@/assets/hero-car.avif";
         </v-img>
       </v-sheet>
 
-      <!-- Autos Destacados -->
       <section class="featured-cars my-12">
         <v-container>
           <h2 class="text-h4 font-weight-bold mb-6 text-center">
             Autos Destacados de la Semana
           </h2>
-
           <v-row dense>
             <v-col
-              v-for="car in cars"
+              v-for="car in allCars.slice(0, 4)"
               :key="car.id"
               cols="12"
               sm="6"
@@ -48,13 +56,11 @@ import heroImage from "@/assets/hero-car.avif";
         </v-container>
       </section>
 
-      <!-- Ventajas -->
       <section class="advantages py-12">
         <v-container>
           <h2 class="text-h4 font-weight-bold mb-8 text-center">
             ¿Por qué elegirnos?
           </h2>
-
           <v-row justify="center" align="center" class="text-center" dense>
             <v-col cols="12" sm="6" md="3">
               <v-icon size="48" color="primary">mdi-cash-multiple</v-icon>
@@ -66,7 +72,6 @@ import heroImage from "@/assets/hero-car.avif";
                 ideal.
               </p>
             </v-col>
-
             <v-col cols="12" sm="6" md="3">
               <v-icon size="48" color="primary">mdi-shield-check</v-icon>
               <h3 class="text-h6 font-weight-bold mt-3">Garantía oficial</h3>
@@ -75,7 +80,6 @@ import heroImage from "@/assets/hero-car.avif";
                 fabricante.
               </p>
             </v-col>
-
             <v-col cols="12" sm="6" md="3">
               <v-icon size="48" color="primary">mdi-currency-usd</v-icon>
               <h3 class="text-h6 font-weight-bold mt-3">Financiamiento</h3>
@@ -83,7 +87,6 @@ import heroImage from "@/assets/hero-car.avif";
                 Opciones de financiación flexibles para facilitar tu compra.
               </p>
             </v-col>
-
             <v-col cols="12" sm="6" md="3">
               <v-icon size="48" color="primary">mdi-account-group</v-icon>
               <h3 class="text-h6 font-weight-bold mt-3">
@@ -95,7 +98,6 @@ import heroImage from "@/assets/hero-car.avif";
         </v-container>
       </section>
 
-      <!-- CTA Final -->
       <section class="cta-final py-12 text-center">
         <v-container>
           <h2 class="text-h4 font-weight-bold mb-4">

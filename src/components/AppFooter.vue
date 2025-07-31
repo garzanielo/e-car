@@ -2,14 +2,13 @@
   <v-footer color="primary" class="pa-6 text-white">
     <v-container>
       <v-row justify="space-between" align="center" class="flex-wrap">
-        <!-- Texto -->
+        
         <v-col cols="12" md="6" class="mb-2 mb-md-0">
           <p class="mb-0 text-subtitle-2">
             &copy; {{ new Date().getFullYear() }} <strong>e-Car</strong>. Todos los derechos reservados.
           </p>
         </v-col>
 
-        <!-- Redes -->
         <v-col cols="12" md="6" class="text-md-end">
           <v-btn
             v-for="(icon, i) in socialIcons"

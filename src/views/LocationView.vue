@@ -2,7 +2,7 @@
 
 <template>
   <v-container class="py-12">
-    <!-- Título -->
+    
     <v-row class="text-center mb-10">
       <v-col>
         <v-icon size="48" color="primary">mdi-map-marker</v-icon>
@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
 
-    <!-- Mapa -->
+    
     <v-row justify="center" class="mb-10">
       <v-col cols="12" md="10">
         <div class="map-container">
@@ -28,7 +28,7 @@
       </v-col>
     </v-row>
 
-    <!-- Info de contacto -->
+    
     <v-row justify="center">
       <v-col cols="12" md="6">
         <v-card class="pa-6" elevation="3" rounded="xl" color="grey-lighten-5">

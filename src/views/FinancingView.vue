@@ -2,7 +2,7 @@
 
 <template>
   <v-container class="py-16">
-    <!-- Título principal -->
+    
     <v-row justify="center" class="mb-12 text-center">
       <v-col cols="12" md="8">
         <h1 class="text-h4 font-weight-bold mb-4">Opciones de Financiación</h1>
@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
 
-    <!-- Cards de opciones -->
+    
     <v-row justify="center" align="stretch" class="mb-16">
       <v-col cols="12" sm="6" md="4" class="d-flex">
         <v-card
@@ -62,7 +62,7 @@
       </v-col>
     </v-row>
 
-    <!-- Llamado a la acción -->
+    
     <v-row justify="center">
       <v-col cols="12" md="6" class="text-center">
         <p class="text-subtitle-1 mb-4">

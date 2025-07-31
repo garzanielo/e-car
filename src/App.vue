@@ -17,10 +17,10 @@ import AppFooter from "./components/AppFooter.vue";
 </template>
 
 <style scoped>
-/* Asegura que el contenido tenga mínimo el alto de la pantalla */
+
 .v-main {
   min-height: calc(
     100vh - 64px - 120px
-  ); /* Ajustá según altura navbar/footer */
+  ); 
 }
 </style>
