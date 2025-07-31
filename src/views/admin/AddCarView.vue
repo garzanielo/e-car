@@ -53,11 +53,14 @@ function submit() {
               label="Año"
               type="number"
               required
+              class="no-spinner"
             />
             <v-text-field
               v-model="form.mileage"
               label="Kilometraje"
               type="number"
+              required
+              class="no-spinner"
             />
             <v-text-field
               v-model="form.price"
@@ -65,14 +68,42 @@ function submit() {
               prefix="$"
               type="number"
               required
+              class="no-spinner"
             />
-            <v-text-field v-model="form.fuelType" label="Tipo de Combustible" />
-            <v-text-field v-model="form.transmission" label="Transmisión" />
-            <v-text-field v-model="form.condition" label="Condición" />
+            <v-select
+              v-model="form.fuelType"
+              :items="[
+                'Nafta',
+                'Nafta + GNC',
+                'Diésel',
+                'Híbrido',
+                'Eléctrico',
+              ]"
+              label="Tipo de Combustible"
+              required
+            />
+            <v-select
+              v-model="form.transmission"
+              :items="['Manual', 'Automática']"
+              label="Transmisión"
+              required
+            />
+            <v-select
+              v-model="form.condition"
+              :items="['Nuevo', 'Usado']"
+              label="Condición"
+              required
+            />
             <v-text-field v-model="form.image" label="URL Imagen" />
-            <v-text-field v-model="form.engine" label="Motor" />
-            <v-text-field v-model="form.color" label="Color" />
-            <v-text-field v-model="form.doors" label="Puertas" type="number" />
+            <v-text-field v-model="form.engine" label="Motor" required />
+            <v-text-field v-model="form.color" label="Color" required />
+            <v-text-field
+              v-model="form.doors"
+              label="Puertas"
+              type="number"
+              required
+              class="no-spinner"
+            />
             <v-btn type="submit" color="primary" class="mt-4 text-white" block>
               Agregar auto
             </v-btn>

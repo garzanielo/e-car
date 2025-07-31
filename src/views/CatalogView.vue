@@ -17,14 +17,23 @@ const allCars = computed(() => {
   return Array.from(uniqueById.values());
 });
 
-watchEffect(() => {
-  const prices = allCars.value.map(car => car.price);
-  const mileage = allCars.value.map(car => car.mileage);
-  const years = allCars.value.map(car => car.year);
+const minPrice = computed(() => Math.min(...allCars.value.map((c) => c.price)));
+const maxPrice = computed(() => Math.max(...allCars.value.map((c) => c.price)));
 
-  priceRange.value = [Math.min(...prices), Math.max(...prices)];
-  mileageRange.value = [Math.min(...mileage), Math.max(...mileage)];
-  yearRange.value = [Math.min(...years), Math.max(...years)];
+const minMileage = computed(() =>
+  Math.min(...allCars.value.map((c) => c.mileage))
+);
+const maxMileage = computed(() =>
+  Math.max(...allCars.value.map((c) => c.mileage))
+);
+
+const minYear = computed(() => Math.min(...allCars.value.map((c) => c.year)));
+const maxYear = computed(() => Math.max(...allCars.value.map((c) => c.year)));
+
+watchEffect(() => {
+  priceRange.value = [minPrice.value, maxPrice.value];
+  mileageRange.value = [minMileage.value, maxMileage.value];
+  yearRange.value = [minYear.value, maxYear.value];
 });
 
 const carBrands = computed(() => {
@@ -65,8 +74,8 @@ const filteredCars = computed(() => {
         </div>
         <v-range-slider
           v-model="priceRange"
-          :min="0"
-          :max="50000"
+          :min="minPrice"
+          :max="maxPrice"
           step="1000"
           thumb-label
           class="mb-6"
@@ -82,8 +91,8 @@ const filteredCars = computed(() => {
         </div>
         <v-range-slider
           v-model="mileageRange"
-          :min="0"
-          :max="100000"
+          :min="minMileage"
+          :max="maxMileage"
           step="1000"
           thumb-label
           class="mb-6"
@@ -98,8 +107,8 @@ const filteredCars = computed(() => {
         </div>
         <v-range-slider
           v-model="yearRange"
-          :min="2000"
-          :max="2025"
+          :min="minYear"
+          :max="maxYear"
           step="1"
           thumb-label
           class="mb-6"
@@ -118,7 +127,7 @@ const filteredCars = computed(() => {
           class="mt-4"
         />
 
-        <v-btn color="primary" block class="mt-8" depressed> Buscar </v-btn>
+        <v-btn color="primary" block class="mt-8" depressed>Buscar</v-btn>
       </v-col>
 
       <v-col cols="12" md="9">
