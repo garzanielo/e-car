@@ -58,7 +58,7 @@ const routes = [
     },
   },
   {
-    path: "/requests",
+    path: "/admin/client-requests",
     name: "ClientRequests",
     component: ClientRequestsView,
     beforeEnter: (to, from, next) => {
