@@ -63,8 +63,24 @@ function goBack() {
 
     <v-row>
       <v-col cols="12" md="6">
+        <v-carousel
+          v-if="car?.images && car.images.length"
+          height="400"
+          hide-delimiters
+          show-arrows="hover"
+          cycle
+          class="rounded-xl mb-4"
+        >
+          <v-carousel-item
+            v-for="(img, i) in car.images"
+            :key="i"
+            :src="img"
+            cover
+          />
+        </v-carousel>
+
         <v-img
-          v-if="car"
+          v-else-if="car"
           :src="car.image"
           alt="Car Image"
           class="rounded-xl"
@@ -77,21 +93,34 @@ function goBack() {
         <h2 class="text-h4 font-weight-bold mb-2">
           {{ car.brand }} {{ car.model }}
         </h2>
-        <p class="text-subtitle-1 text--secondary mb-4">
-          {{ car.year }} • {{ car.condition }}
-        </p>
-        <h3 class="text-h5 font-weight-bold text-primary mb-6">
+        <div class="d-flex align-center mb-2">
+          <v-chip
+            :color="car.condition === 'Nuevo' ? 'green' : 'orange'"
+            class="me-2"
+            small
+            text-color="white"
+          >
+            {{ car.condition }}
+          </v-chip>
+          <span class="text-subtitle-1">{{ car.year }}</span>
+        </div>
+
+        <h3 class="text-h5 font-weight-bold text-primary mb-4">
           $ {{ car.price.toLocaleString() }}
         </h3>
 
-        <v-divider class="mb-4" />
+        <v-btn color="success" class="mb-6" @click="router.push('/contact')">
+          Consultar por este auto
+        </v-btn>
 
-        <v-row dense>
-          <v-col cols="6" v-for="(label, key) in carDetails" :key="key">
-            <v-icon class="mr-2">{{ label.icon }}</v-icon>
-            <strong>{{ label.text }}:</strong> {{ car[key] }}
-          </v-col>
-        </v-row>
+        <v-card outlined class="pa-4 mb-6">
+          <v-row dense>
+            <v-col cols="6" v-for="(label, key) in carDetails" :key="key">
+              <v-icon color="primary" class="mr-2">{{ label.icon }}</v-icon>
+              <strong>{{ label.text }}:</strong> {{ car[key] }}
+            </v-col>
+          </v-row>
+        </v-card>
       </v-col>
     </v-row>
 
@@ -107,9 +136,18 @@ function goBack() {
         md="4"
       >
         <router-link :to="`/car/${related.id}`" class="no-underline">
-          <v-card class="hover:scale-105 transition" elevation="3" hover>
-            <v-img :src="related.image" height="200px" cover />
-            <v-card-title>
+          <v-card
+            class="hover:scale-105 transition rounded-xl"
+            elevation="4"
+            hover
+          >
+            <v-img
+              :src="related.image"
+              height="200px"
+              cover
+              class="rounded-t-xl"
+            />
+            <v-card-title class="text-h6">
               {{ related.brand }} {{ related.model }}
             </v-card-title>
             <v-card-subtitle>

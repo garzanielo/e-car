@@ -1,11 +1,11 @@
-import toyotaImg from '@/assets/cars/toyota.webp'
-import mustangImg from '@/assets/cars/mustang.webp'
-import teslaImg from '@/assets/cars/tesla.webp'
-import onixImg from '@/assets/cars/onix.webp'
-import hondaCivicImg from '@/assets/cars/honda-civic.webp'
-import bmwX5Img from '@/assets/cars/bmw-x5.webp'
-import audiA4Img from '@/assets/cars/audi-a4.webp'
-import volkswagenGolfImg from '@/assets/cars/volkswagen-golf.jpg'
+import toyotaImg from "@/assets/cars/toyota.webp";
+import mustangImg from "@/assets/cars/mustang.webp";
+import teslaImg from "@/assets/cars/tesla.webp";
+import onixImg from "@/assets/cars/onix.webp";
+import hondaCivicImg from "@/assets/cars/honda-civic.webp";
+import bmwX5Img from "@/assets/cars/bmw-x5.webp";
+import audiA4Img from "@/assets/cars/audi-a4.webp";
+import volkswagenGolfImg from "@/assets/cars/volkswagen-golf.jpg";
 
 export const cars = [
   {
@@ -19,9 +19,10 @@ export const cars = [
     mileage: 15000,
     condition: "Usado",
     image: toyotaImg,
+    images: [toyotaImg, toyotaImg, toyotaImg],
     engine: "1.8L",
     color: "Gris Plata",
-    doors: 4
+    doors: 4,
   },
   {
     id: 2,
@@ -34,9 +35,10 @@ export const cars = [
     mileage: 0,
     condition: "Nuevo",
     image: mustangImg,
+    images: [mustangImg, mustangImg, mustangImg],
     engine: "5.0L V8",
     color: "Rojo Fuego",
-    doors: 2
+    doors: 2,
   },
   {
     id: 3,
@@ -49,9 +51,10 @@ export const cars = [
     mileage: 8000,
     condition: "Usado",
     image: teslaImg,
+    images: [teslaImg, teslaImg, teslaImg],
     engine: "Motor Dual Eléctrico",
     color: "Blanco Perlado",
-    doors: 4
+    doors: 4,
   },
   {
     id: 4,
@@ -64,9 +67,10 @@ export const cars = [
     mileage: 30000,
     condition: "Usado",
     image: onixImg,
+    images: [onixImg, onixImg, onixImg],
     engine: "1.2L",
     color: "Azul Marino",
-    doors: 5
+    doors: 5,
   },
   {
     id: 5,
@@ -79,9 +83,10 @@ export const cars = [
     mileage: 12000,
     condition: "Usado",
     image: hondaCivicImg,
+    images: [hondaCivicImg, hondaCivicImg, hondaCivicImg],
     engine: "2.0L",
     color: "Negro Cristal",
-    doors: 4
+    doors: 4,
   },
   {
     id: 6,
@@ -94,9 +99,10 @@ export const cars = [
     mileage: 0,
     condition: "Nuevo",
     image: bmwX5Img,
+    images: [bmwX5Img, bmwX5Img, bmwX5Img],
     engine: "3.0L Turbo",
     color: "Gris Mineral",
-    doors: 5
+    doors: 5,
   },
   {
     id: 7,
@@ -109,9 +115,10 @@ export const cars = [
     mileage: 15000,
     condition: "Usado",
     image: audiA4Img,
+    images: [audiA4Img, audiA4Img, audiA4Img],
     engine: "2.0L TFSI",
     color: "Blanco Glaciar",
-    doors: 4
+    doors: 4,
   },
   {
     id: 8,
@@ -124,8 +131,9 @@ export const cars = [
     mileage: 25000,
     condition: "Usado",
     image: volkswagenGolfImg,
+    images: [volkswagenGolfImg, volkswagenGolfImg, volkswagenGolfImg],
     engine: "1.4L TSI",
     color: "Rojo Tornado",
-    doors: 5
-  }
-]
+    doors: 5,
+  },
+];
